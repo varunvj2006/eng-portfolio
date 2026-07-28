@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Varun Vijay — Computer Engineering portfolio focused on embedded firmware, robotics, electronics, and software.">
+  <meta name="theme-color" content="#151a44">
+  <title>Varun Vijay | Engineering Loadout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="boot-screen" id="bootScreen">
+    <div class="boot-grid"></div>
+    <div class="boot-card">
+      <div class="boot-mark" aria-hidden="true">VV</div>
+      <p class="eyebrow">ENGINEERING PROFILE ONLINE</p>
+      <h1>Ready to deploy?</h1>
+      <p>Explore embedded firmware, robotics, vehicle electronics, and software projects as an interactive mission map.</p>
+      <button class="game-button primary" id="deployButton" type="button">
+        <span>DEPLOY PORTFOLIO</span>
+        <small>Press Enter</small>
+      </button>
+      <p class="boot-note">Original game-inspired interface. No external game artwork or assets are used.</p>
+    </div>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="sky-lines" aria-hidden="true"></div>
+
+  <header class="hud-header">
+    <a href="#home" class="brand" aria-label="Varun Vijay portfolio home">
+      <span class="brand-badge">VV</span>
+      <span>
+        <strong>VARUN VIJAY</strong>
+        <small>ENGINEERING LOADOUT</small>
+      </span>
+    </a>
+
+    <nav class="hud-nav" aria-label="Portfolio navigation">
+      <a href="#missions">MISSIONS</a>
+      <a href="#loadout">LOADOUT</a>
+      <a href="#timeline">QUEST LOG</a>
+      <a href="#contact">SQUAD UP</a>
+    </nav>
+
+    <div class="hud-actions">
+      <button class="icon-button" id="soundToggle" type="button" aria-label="Toggle interface sounds" aria-pressed="true">
+        <span id="soundIcon">SFX ON</span>
+      </button>
+      <a class="mini-button" href="Varun_Vijay_Engineering_Portfolio.pdf" download>PDF</a>
+    </div>
+  </header>
+
+  <div class="xp-hud" aria-label="Page exploration progress">
+    <div class="level-chip">
+      <span>LVL</span>
+      <strong>26</strong>
+    </div>
+    <div class="xp-track">
+      <div class="xp-label">
+        <span>PORTFOLIO XP</span>
+        <span id="xpText">0 / 100</span>
+      </div>
+      <div class="xp-bar"><span id="xpFill"></span></div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-orb orb-one" aria-hidden="true"></div>
+      <div class="hero-orb orb-two" aria-hidden="true"></div>
+      <div class="island island-one" aria-hidden="true"></div>
+      <div class="island island-two" aria-hidden="true"></div>
+
+      <div class="hero-copy">
+        <div class="status-pill"><span></span> AVAILABLE FOR FALL 2026 CO-OP</div>
+        <p class="eyebrow">COMPUTER ENGINEERING · UNIVERSITY OF WATERLOO</p>
+        <h1>
+          BUILDING SYSTEMS
+          <span>WHERE CODE MEETS HARDWARE.</span>
+        </h1>
+        <p class="hero-summary">
+          I develop embedded firmware, distributed robotic control, vehicle electronics,
+          and practical software tools—then validate them at the signal level.
+        </p>
+        <div class="hero-actions">
+          <a class="game-button primary" href="#missions">VIEW MISSIONS</a>
+          <a class="game-button secondary" href="mailto:v5vijay@uwaterloo.ca">CONTACT ME</a>
+        </div>
+        <div class="quick-stats">
+          <div>
+            <strong>2×</strong>
+            <span>STM32 controllers over CAN</span>
+          </div>
+          <div>
+            <strong>3+</strong>
+            <span>physical systems built</span>
+          </div>
+          <div>
+            <strong>25%</strong>
+            <span>faster Sniffd AI search</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card-wrap">
+        <div class="player-card">
+          <div class="player-card-top">
+            <div>
+              <p>SELECTED PLAYER</p>
+              <h2>VARUN</h2>
+              <h2 class="outline">VIJAY</h2>
+            </div>
+            <div class="online-dot" title="Available"></div>
+          </div>
+
+          <div class="character-stage" aria-label="Stylized engineering character card">
+            <div class="tech-ring ring-a"></div>
+            <div class="tech-ring ring-b"></div>
+            <div class="character">
+              <div class="head">
+                <div class="visor"></div>
+              </div>
+              <div class="torso">
+                <div class="core-light"></div>
+                <div class="chest-line line-one"></div>
+                <div class="chest-line line-two"></div>
+              </div>
+              <div class="arm left-arm"></div>
+              <div class="arm right-arm"></div>
+            </div>
+            <div class="platform"></div>
+          </div>
+
+          <div class="player-tags">
+            <span>FIRMWARE</span>
+            <span>ROBOTICS</span>
+            <span>SOFTWARE</span>
+          </div>
+
+          <div class="player-meta">
+            <div><span>CLASS</span><strong>COMPUTER ENGINEER</strong></div>
+            <div><span>BASE</span><strong>WATERLOO, ON</strong></div>
+          </div>
+        </div>
+
+        <button class="floating-command" id="randomMission" type="button">
+          <span>RANDOM MISSION</span>
+          <strong>ROLL PROJECT</strong>
+        </button>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Technical skills ticker">
+      <div>
+        <span>STM32</span><b>◆</b><span>EMBEDDED C</span><b>◆</b><span>CAN</span><b>◆</b>
+        <span>ROS2</span><b>◆</b><span>PYTHON</span><b>◆</b><span>LINUX</span><b>◆</b>
+        <span>KICAD</span><b>◆</b><span>OSCILLOSCOPE DEBUGGING</span><b>◆</b>
+        <span>STM32</span><b>◆</b><span>EMBEDDED C</span><b>◆</b><span>CAN</span><b>◆</b>
+        <span>ROS2</span><b>◆</b><span>PYTHON</span><b>◆</b><span>LINUX</span><b>◆</b>
+      </div>
+    </section>
+
+    <section class="section missions-section" id="missions">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">FEATURED WORK</p>
+          <h2>MISSION SELECT</h2>
+        </div>
+        <p>Choose a mission card to inspect the objective, technical stack, engineering contribution, and transferable value.</p>
+      </div>
+
+      <div class="mission-filter" role="group" aria-label="Filter projects">
+        <button class="filter-button active" type="button" data-filter="all">ALL</button>
+        <button class="filter-button" type="button" data-filter="firmware">FIRMWARE</button>
+        <button class="filter-button" type="button" data-filter="robotics">ROBOTICS</button>
+        <button class="filter-button" type="button" data-filter="software">SOFTWARE</button>
+        <button class="filter-button" type="button" data-filter="digital">DIGITAL</button>
+      </div>
+
+      <div class="mission-grid" id="missionGrid">
+        <article class="mission-card legendary" data-category="firmware robotics" data-project="benchbot" tabindex="0">
+          <div class="rarity-label">LEGENDARY MISSION</div>
+          <div class="mission-visual robot-visual">
+            <div class="radar"></div>
+            <div class="robot-chip">ROS</div>
+            <div class="robot-chip secondary-chip">STM32</div>
+            <div class="signal signal-a"></div>
+            <div class="signal signal-b"></div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 01</p>
+            <h3>BenchBot Distributed Control</h3>
+            <p>ROS-based high-level control linked to STM32F401 motor and servo firmware.</p>
+            <div class="tag-row"><span>STM32F401</span><span>ROS</span><span>PWM</span><span>ENCODERS</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+
+        <article class="mission-card epic" data-category="firmware" data-project="electrium" tabindex="0">
+          <div class="rarity-label">EPIC MISSION</div>
+          <div class="mission-visual can-visual">
+            <div class="board board-a"><span>MCU A</span></div>
+            <div class="can-line"><i></i><i></i><i></i></div>
+            <div class="board board-b"><span>MCU B</span></div>
+            <div class="power-pulse"></div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 02</p>
+            <h3>Dual-STM32 Vehicle Control</h3>
+            <p>CAN-based distributed architecture for power, speed, user I/O, and fault handling.</p>
+            <div class="tag-row"><span>CAN</span><span>HALL SENSOR</span><span>KICAD</span><span>SAFETY</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+
+        <article class="mission-card rare" data-category="software" data-project="security" tabindex="0">
+          <div class="rarity-label">RARE MISSION</div>
+          <div class="mission-visual data-visual">
+            <div class="data-column c1"></div>
+            <div class="data-column c2"></div>
+            <div class="data-column c3"></div>
+            <div class="scan-line"></div>
+            <div class="ai-core">AI</div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 03</p>
+            <h3>Semantic Security Pipeline</h3>
+            <p>Python crawler, embedding-based filtering, runtime monitoring, and structured data storage.</p>
+            <div class="tag-row"><span>PYTHON</span><span>TOR</span><span>EMBEDDINGS</span><span>JSONL</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+
+        <article class="mission-card uncommon" data-category="firmware" data-project="watering" tabindex="0">
+          <div class="rarity-label">UNCOMMON MISSION</div>
+          <div class="mission-visual water-visual">
+            <div class="plant"><i></i><i></i><i></i><b></b></div>
+            <div class="water-drop"></div>
+            <div class="sensor-wave"></div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 04</p>
+            <h3>Automated Plant Watering</h3>
+            <p>End-to-end STM32 system combining sensing, control logic, actuation, and user feedback.</p>
+            <div class="tag-row"><span>ADC</span><span>SERVO</span><span>LCD</span><span>SOLIDWORKS</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+
+        <article class="mission-card uncommon" data-category="digital" data-project="fpga" tabindex="0">
+          <div class="rarity-label">UNCOMMON MISSION</div>
+          <div class="mission-visual fpga-visual">
+            <div class="traffic-light"><i></i><i></i><i></i></div>
+            <div class="waveform">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 05</p>
+            <h3>FPGA Traffic Controller</h3>
+            <p>VHDL finite-state machine with clock division, timed sequencing, simulation, and board testing.</p>
+            <div class="tag-row"><span>VHDL</span><span>QUARTUS</span><span>FSM</span><span>FPGA</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+
+        <article class="mission-card rare" data-category="software" data-project="sniffd" tabindex="0">
+          <div class="rarity-label">RARE MISSION</div>
+          <div class="mission-visual sniffd-visual">
+            <div class="bottle"><i></i></div>
+            <div class="scent s1"></div>
+            <div class="scent s2"></div>
+            <div class="scent s3"></div>
+            <div class="speed-chip">+25%</div>
+          </div>
+          <div class="mission-content">
+            <p class="mission-number">MISSION 06</p>
+            <h3>Sniffd AI</h3>
+            <p>Natural-language fragrance matching with local AI, live product search, and query caching.</p>
+            <div class="tag-row"><span>OLLAMA</span><span>PYTHON</span><span>APIs</span><span>JAVASCRIPT</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section loadout-section" id="loadout">
+      <div class="section-heading light-heading">
+        <div>
+          <p class="eyebrow">TECHNICAL INVENTORY</p>
+          <h2>SELECT LOADOUT</h2>
+        </div>
+        <p>Switch categories to view the tools I use across the full engineering stack.</p>
+      </div>
+
+      <div class="loadout-shell">
+        <div class="loadout-tabs" role="tablist" aria-label="Technical skill categories">
+          <button class="loadout-tab active" type="button" role="tab" aria-selected="true" data-loadout="embedded">
+            <span>01</span><strong>EMBEDDED</strong>
+          </button>
+          <button class="loadout-tab" type="button" role="tab" aria-selected="false" data-loadout="software">
+            <span>02</span><strong>SOFTWARE</strong>
+          </button>
+          <button class="loadout-tab" type="button" role="tab" aria-selected="false" data-loadout="hardware">
+            <span>03</span><strong>HARDWARE</strong>
+          </button>
+          <button class="loadout-tab" type="button" role="tab" aria-selected="false" data-loadout="design">
+            <span>04</span><strong>DESIGN</strong>
+          </button>
+        </div>
+
+        <div class="loadout-display">
+          <div class="loadout-item-visual" id="loadoutVisual" aria-hidden="true">
+            <div class="inventory-hex hex-one"></div>
+            <div class="inventory-hex hex-two"></div>
+            <div class="mcu-model">
+              <span>STM32</span>
+              <i class="pin p1"></i><i class="pin p2"></i><i class="pin p3"></i><i class="pin p4"></i>
+              <i class="pin p5"></i><i class="pin p6"></i><i class="pin p7"></i><i class="pin p8"></i>
+            </div>
+          </div>
+
+          <div class="loadout-info">
+            <p class="rarity-title" id="loadoutRarity">LEGENDARY LOADOUT</p>
+            <h3 id="loadoutTitle">Embedded Firmware</h3>
+            <p id="loadoutDescription">
+              Low-level control, sensor acquisition, deterministic communication, and physical-system integration.
+            </p>
+
+            <div class="stat-list" id="statList">
+              <div><span>C / C++</span><i><b style="width:92%"></b></i><em>92</em></div>
+              <div><span>STM32 HAL</span><i><b style="width:90%"></b></i><em>90</em></div>
+              <div><span>CAN / PWM / ADC</span><i><b style="width:88%"></b></i><em>88</em></div>
+              <div><span>RT Debugging</span><i><b style="width:84%"></b></i><em>84</em></div>
+            </div>
+
+            <div class="inventory-chips" id="inventoryChips">
+              <span>STM32CubeIDE</span><span>Encoders</span><span>Servo Control</span><span>Sensor Integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-section" id="timeline">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPERIENCE</p>
+          <h2>QUEST LOG</h2>
+        </div>
+        <p>Current and completed roles where I developed, integrated, tested, and documented real engineering systems.</p>
+      </div>
+
+      <div class="quest-map">
+        <div class="quest-path" aria-hidden="true"></div>
+
+        <article class="quest-entry active-quest">
+          <div class="quest-node"><span>01</span></div>
+          <div class="quest-card">
+            <div class="quest-top">
+              <span class="quest-status">ACTIVE QUEST</span>
+              <span>JAN 2026 — PRESENT</span>
+            </div>
+            <h3>AI Security Research Engineer</h3>
+            <p>Real-time Embedded Software Group · University of Waterloo</p>
+            <ul>
+              <li>Developing a Tor-enabled cybersecurity data crawler and semantic filtering pipeline.</li>
+              <li>Building runtime monitoring, JSONL processing, and AI-oriented research tooling.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="quest-entry active-quest">
+          <div class="quest-node"><span>02</span></div>
+          <div class="quest-card">
+            <div class="quest-top">
+              <span class="quest-status">ACTIVE QUEST</span>
+              <span>MAY 2025 — PRESENT</span>
+            </div>
+            <h3>Embedded Systems Developer</h3>
+            <p>Electrium Mobility Design Team</p>
+            <ul>
+              <li>Developing firmware for a dual-STM32 vehicle architecture using CAN communication.</li>
+              <li>Integrating sensing, power distribution, shutdown controls, LEDs, and buzzer feedback.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="quest-entry completed-quest">
+          <div class="quest-node"><span>03</span></div>
+          <div class="quest-card">
+            <div class="quest-top">
+              <span class="quest-status">QUEST COMPLETE</span>
+              <span>SEP 2025 — DEC 2025</span>
+            </div>
+            <h3>Robotics Research Assistant</h3>
+            <p>Real-time Embedded Software Group · University of Waterloo</p>
+            <ul>
+              <li>Created a ROS-based distributed control architecture on Raspberry Pi 5 and Ubuntu.</li>
+              <li>Implemented STM32 motor, PWM, encoder, and feedback-control firmware.</li>
+            </ul>
+          </div>
+        </article>
+
+
+        <article class="quest-entry completed-quest">
+          <div class="quest-node"><span>04</span></div>
+          <div class="quest-card">
+            <div class="quest-top">
+              <span class="quest-status">QUEST COMPLETE</span>
+              <span>MAY 2025 — AUG 2025</span>
+            </div>
+            <h3>Software Testing Developer (Co-op)</h3>
+            <p>ACESOFT Technologies</p>
+            <ul>
+              <li>Performed manual system testing, designed and executed test cases, and worked with QA engineers to reduce critical defects before release.</li>
+              <li>Contributed to front-end development using JavaScript and React, improving usability and reducing load times by 15%.</li>
+              <li>Tested an AI-powered health-tracking application and proposed feature improvements that supported better prediction accuracy.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="quest-entry education-quest">
+          <div class="quest-node"><span>05</span></div>
+          <div class="quest-card">
+            <div class="quest-top">
+              <span class="quest-status">MAIN CAMPAIGN</span>
+              <span>2024 — 2029</span>
+            </div>
+            <h3>BASc Computer Engineering</h3>
+            <p>University of Waterloo · Presidential Scholarship of Distinction</p>
+            <ul>
+              <li>Coursework includes embedded microprocessors, digital systems, electronic circuits, algorithms, signals, and concurrency.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="contact-panel">
+        <div class="contact-copy">
+          <p class="eyebrow">NEW SQUAD REQUEST</p>
+          <h2>LET’S BUILD SOMETHING THAT HAS TO WORK.</h2>
+          <p>
+            I am seeking Fall 2026 co-op opportunities in firmware, embedded systems,
+            robotics, electronics, and software engineering.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:v5vijay@uwaterloo.ca">
+              <span>EMAIL</span><strong>v5vijay@uwaterloo.ca</strong>
+            </a>
+            <a href="https://github.com/varunvj2006" target="_blank" rel="noreferrer">
+              <span>GITHUB</span><strong>github.com/varunvj2006</strong>
+            </a>
+            <a href="https://www.linkedin.com/in/varun-vijay-21b686327/" target="_blank" rel="noreferrer">
+              <span>LINKEDIN</span><strong>linkedin.com/in/varun-vijay-21b686327/</strong>
+            </a>
+            <a href="tel:+12263391729">
+              <span>PHONE</span><strong>226-339-1729</strong>
+            </a>
+          </div>
+        </div>
+
+        <div class="squad-card">
+          <div class="squad-top">
+            <span>PARTY STATUS</span>
+            <strong>1 / 4</strong>
+          </div>
+          <div class="party-slot filled">
+            <div class="party-avatar">VV</div>
+            <div><strong>VARUN VIJAY</strong><span>READY</span></div>
+          </div>
+          <div class="party-slot">
+            <div class="empty-avatar">+</div>
+            <div><strong>YOUR TEAM</strong><span>OPEN SLOT</span></div>
+          </div>
+          <a class="game-button primary full-button" href="mailto:v5vijay@uwaterloo.ca?subject=Engineering%20Opportunity">INVITE TO INTERVIEW</a>
+          <a class="game-button secondary full-button" href="Varun_Vijay_Engineering_Portfolio.pdf" download>DOWNLOAD PORTFOLIO PDF</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>VARUN VIJAY</strong>
+      <span>Embedded Systems · Robotics · Software</span>
+    </div>
+  </footer>
+
+  <div class="mission-modal" id="missionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close mission details">×</button>
+      <p class="modal-rarity" id="modalRarity">MISSION DETAILS</p>
+      <h2 id="modalTitle">Project</h2>
+      <p class="modal-summary" id="modalSummary"></p>
+
+      <div class="modal-grid">
+        <div>
+          <h3>OBJECTIVE</h3>
+          <p id="modalObjective"></p>
+        </div>
+        <div>
+          <h3>MY CONTRIBUTION</h3>
+          <ul id="modalContributions"></ul>
+        </div>
+      </div>
+
+      <div class="modal-tech">
+        <h3>LOADOUT USED</h3>
+        <div class="tag-row" id="modalTags"></div>
+      </div>
+
+      <div class="modal-value">
+        <span>TRANSFERABLE VALUE</span>
+        <p id="modalValue"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

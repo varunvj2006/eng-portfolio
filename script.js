@@ -1,4 +1,20 @@
 const projectData = {
+  nexa: {
+    rarity: "LEGENDARY MISSION", title: "NEXA FPGA Computer & Hardware Diagnostic Platform",
+    summary: "A custom 16-bit FPGA processor and diagnostic platform designed in SystemVerilog.",
+    objective: "Build an original processor architecture and verify its instruction execution in simulation.",
+    contributions: ["Designed an original ISA, ALU, register file, program counter, instruction decoder, and control unit.", "Created testbenches with Icarus Verilog and GTKWave to check instructions, flags, control signals, and program-counter behavior.", "Extending the platform with memory-mapped peripherals for PWM, sensing, and board diagnostics."],
+    tags: ["SystemVerilog", "FPGA", "Icarus Verilog", "GTKWave", "Git"],
+    value: "Processor design, simulation-driven validation, and hardware diagnostics."
+  },
+  glitch: {
+    rarity: "EPIC MISSION", title: "Glitch Goblin Embedded Validation Platform",
+    summary: "A PC-to-STM32-to-ESP32 prototype for repeatable embedded communication and fault testing.",
+    objective: "Make asynchronous serial communication reliable and observable during hardware validation.",
+    contributions: ["Developed interrupt-driven UART reception with a ring buffer on STM32F401.", "Designed the SERUM framed binary protocol with CRC-16-CCITT, ACK/NACK, sequence tracking, and duplicate suppression.", "Prototyped PC, STM32, and ESP32 communication for telemetry and fault-handling tests."],
+    tags: ["STM32", "ESP32", "C/C++", "Python", "UART", "CRC-16"],
+    value: "Robust protocol design and repeatable embedded-system validation."
+  },
   benchbot: {
     rarity: "LEGENDARY MISSION",
     title: "BenchBot Distributed Control",
@@ -102,7 +118,7 @@ const loadouts = {
       ["CAN / PWM / ADC", 88],
       ["Real-Time Debugging", 84]
     ],
-    chips: ["STM32CubeIDE", "Encoders", "Servo Control", "Sensor Integration"],
+    chips: ["STM32CubeIDE", "Encoders", "Servo Control", "Sensor Integration", "PlatformIO", "FreeRTOS", "SPI", "UART", "ROS2"],
     icon: "STM32"
   },
   software: {
@@ -115,7 +131,7 @@ const loadouts = {
       ["APIs / JSON", 84],
       ["JavaScript", 80]
     ],
-    chips: ["Docker", "Requests", "BeautifulSoup", "Tkinter", "React"],
+    chips: ["Docker", "Requests", "BeautifulSoup", "Tkinter", "React", "MATLAB", "Bash", "RISC-V Assembly", "VS Code"],
     icon: "PY"
   },
   hardware: {
@@ -128,7 +144,7 @@ const loadouts = {
       ["KiCad", 80],
       ["Power Systems", 78]
     ],
-    chips: ["Function Generator", "DMM", "Current Sensing", "PCB Integration"],
+    chips: ["Function Generator", "DMM", "Current Sensing", "PCB Integration", "Logic Analyzer", "Signal Analysis"],
     icon: "PCB"
   },
   design: {
@@ -141,7 +157,7 @@ const loadouts = {
       ["SOLIDWORKS", 78],
       ["Prototyping", 83]
     ],
-    chips: ["Quartus", "FPGA", "AutoCAD", "3D Printing"],
+    chips: ["Quartus", "FPGA", "AutoCAD", "3D Printing", "SystemVerilog", "Icarus Verilog", "GTKWave"],
     icon: "CAD"
   }
 };
@@ -179,18 +195,68 @@ function playTone(frequency = 480, duration = 0.06, type = "square", volume = 0.
   }
 }
 
-function deploy() {
-  bootScreen.classList.add("hidden");
-  playTone(280, .08, "sawtooth", .05);
-  setTimeout(() => playTone(520, .1, "square", .04), 70);
+let landingTarget = "#home";
+
+function finishIntro() {
+  bootScreen.classList.add("landing");
+  playTone(520, .1, "square", .04);
+  setTimeout(() => {
+    bootScreen.classList.add("hidden");
+    const target = document.querySelector(landingTarget);
+    if (target && landingTarget !== "#home") target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 360);
 }
 
-deployButton.addEventListener("click", deploy);
+function deploy(target = "#home") {
+  landingTarget = target;
+  if (bootScreen.classList.contains("loading")) return;
+  const loadingShell = document.getElementById("loadingShell");
+  const loadingFill = document.getElementById("loadingFill");
+  const loadingPercent = document.getElementById("loadingPercent");
+  const loadingTip = document.getElementById("loadingTip");
+  const tips = ["INITIALIZING SYSTEM...", "LOADING FIRMWARE PROFILE...", "INDEXING PROJECT DATA...", "PORTFOLIO READY // DEPLOYING..."];
+  bootScreen.classList.add("loading");
+  loadingShell.setAttribute("aria-hidden", "false");
+  playTone(280, .08, "sawtooth", .05);
+  let progress = 0;
+  const timer = setInterval(() => {
+    progress = Math.min(100, progress + 3 + Math.floor(Math.random() * 6));
+    loadingFill.style.width = progress + "%";
+    loadingPercent.textContent = progress + "%";
+    loadingTip.textContent = tips[Math.min(tips.length - 1, Math.floor(progress / 27))];
+    if (progress >= 100) { clearInterval(timer); setTimeout(finishIntro, 520); }
+  }, 95);
+}
+
+deployButton.addEventListener("click", () => deploy("#home"));
+const skipIntro = document.getElementById("skipIntro");
+if (skipIntro) skipIntro.addEventListener("click", finishIntro);
 window.addEventListener("keydown", event => {
   if (event.key === "Enter" && !bootScreen.classList.contains("hidden")) {
-    deploy();
+    deploy("#home");
   }
 });
+
+document.querySelectorAll(".landing-zone").forEach(zone => {
+  zone.addEventListener("click", () => deploy(zone.dataset.land || "#home"));
+});
+
+const lobbyScene = document.getElementById("lobbyShell");
+if (lobbyScene) {
+  lobbyScene.addEventListener("pointermove", event => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const rect = lobbyScene.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - .5;
+    const y = (event.clientY - rect.top) / rect.height - .5;
+    const map = lobbyScene.querySelector(".cinematic-map");
+    const bus = lobbyScene.querySelector(".bus-layer");
+    const air = lobbyScene.querySelector(".atmosphere-layer");
+    if (map) map.style.translate = `${x * -10}px ${y * -7}px`;
+    if (bus) bus.style.transform = `translate3d(${x * 20}px,${y * 14}px,0)`;
+    if (air) air.style.transform = `translate3d(${x * 34}px,${y * 22}px,0)`;
+  }, { passive:true });
+}
+
 
 soundToggle.addEventListener("click", () => {
   soundEnabled = !soundEnabled;
@@ -357,15 +423,20 @@ document.querySelectorAll(".loadout-tab").forEach(tab => {
   tab.addEventListener("click", () => setLoadout(tab.dataset.loadout));
 });
 
+let heroMotionFrame = 0;
 document.addEventListener("mousemove", event => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const x = (event.clientX / window.innerWidth - .5) * 10;
-  const y = (event.clientY / window.innerHeight - .5) * 10;
-  document.querySelectorAll(".hero-orb").forEach((orb, index) => {
-    const factor = index ? -.7 : 1;
-    orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.innerWidth < 1100) return;
+  if (heroMotionFrame) return;
+  heroMotionFrame = requestAnimationFrame(() => {
+    const x = (event.clientX / window.innerWidth - .5) * 6;
+    const y = (event.clientY / window.innerHeight - .5) * 6;
+    document.querySelectorAll(".hero-orb").forEach((orb, index) => {
+      const factor = index ? -.55 : .75;
+      orb.style.transform = `translate3d(${x * factor}px, ${y * factor}px, 0)`;
+    });
+    heroMotionFrame = 0;
   });
-});
+}, { passive: true });
 
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {

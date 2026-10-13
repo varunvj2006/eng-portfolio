@@ -9,21 +9,30 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="boot-screen" id="bootScreen">
-    <div class="boot-grid"></div>
-    <div class="boot-card">
-      <div class="boot-mark" aria-hidden="true">VV</div>
-      <p class="eyebrow">ENGINEERING PROFILE ONLINE</p>
-      <h1>Ready to deploy?</h1>
-      <p>Explore embedded firmware, robotics, vehicle electronics, and software projects as an interactive mission map.</p>
-      <button class="game-button primary" id="deployButton" type="button">
-        <span>DEPLOY PORTFOLIO</span>
-        <small>Press Enter</small>
-      </button>
-      <p class="boot-note">Original game-inspired interface. No external game artwork or assets are used.</p>
+  <div class="boot-screen clean-loader" id="bootScreen" aria-label="Portfolio loading screen">
+    <div class="loader-grid" aria-hidden="true"></div>
+    <div class="loader-orb orb-a" aria-hidden="true"></div><div class="loader-orb orb-b" aria-hidden="true"></div>
+    <div class="loader-shell" id="lobbyShell">
+      <div class="loader-top"><span>VV // ENGINEERING PORTFOLIO</span><span class="loader-online"><i></i> SYSTEM ONLINE</span></div>
+      <div class="loader-main">
+        <p class="loader-kicker">PLAYER PROFILE // 01</p>
+        <h1>VARUN<br><span>VIJAY</span></h1>
+        <p class="loader-role">COMPUTER ENGINEER · EMBEDDED SYSTEMS · FPGA · ROBOTICS</p>
+        <div class="loader-status"><span>LOOKING FOR</span><strong>SUMMER 2027 OPPORTUNITIES</strong></div>
+        <div class="loader-chips"><span>STM32</span><span>C/C++</span><span>CAN</span><span>ARINC 429</span><span>FPGA</span><span>PYTHON</span></div>
+        <button class="loader-enter" id="deployButton" type="button"><span>ENTER PORTFOLIO</span><small>PRESS TO DEPLOY</small></button>
+      </div>
+      <div class="loader-side" aria-hidden="true"><div class="core"><i></i><b>VV</b></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><span class="data d1">STM32 // READY</span><span class="data d2">CAN // ONLINE</span><span class="data d3">FPGA // READY</span></div>
+      <div class="loader-foot"><span>BUILD · TEST · ITERATE</span><span>WATERLOO, ON</span></div>
+    </div>
+    <div class="loader-progress-screen" id="loadingShell" aria-live="polite" aria-hidden="true">
+      <div class="terminal-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="loader-kicker">INITIALIZING PORTFOLIO</p><h2>LOADING<br><span>ENGINEERING DATA</span></h2>
+      <div class="load-modules"><span>FIRMWARE</span><span>AVIONICS</span><span>PROJECTS</span><span>EXPERIENCE</span></div>
+      <div class="loading-track"><i id="loadingFill"></i></div><div class="loading-meta"><span id="loadingTip">INITIALIZING SYSTEM...</span><b id="loadingPercent">0%</b></div>
+      <button class="skip-intro" id="skipIntro" type="button">SKIP</button>
     </div>
   </div>
-
   <div class="noise" aria-hidden="true"></div>
   <div class="sky-lines" aria-hidden="true"></div>
 
@@ -47,7 +56,7 @@
       <button class="icon-button" id="soundToggle" type="button" aria-label="Toggle interface sounds" aria-pressed="true">
         <span id="soundIcon">SFX ON</span>
       </button>
-      <a class="mini-button" href="Varun_Vijay_Engineering_Portfolio.pdf" download>PDF</a>
+      <a class="mini-button" href="Varun_Vijay_Resume.pdf" download>RESUME</a>
     </div>
   </header>
 
@@ -73,7 +82,7 @@
       <div class="island island-two" aria-hidden="true"></div>
 
       <div class="hero-copy">
-        <div class="status-pill"><span></span> AVAILABLE FOR FALL 2026 CO-OP</div>
+        <div class="status-pill"><span></span> LOOKING FOR SUMMER 2027 OPPORTUNITIES</div>
         <p class="eyebrow">COMPUTER ENGINEERING · UNIVERSITY OF WATERLOO</p>
         <h1>
           BUILDING SYSTEMS
@@ -81,7 +90,7 @@
         </h1>
         <p class="hero-summary">
           I develop embedded firmware, distributed robotic control, vehicle electronics,
-          and practical software tools—then validate them at the signal level.
+          and FPGA systems—then validate them at the signal level.
         </p>
         <div class="hero-actions">
           <a class="game-button primary" href="#missions">VIEW MISSIONS</a>
@@ -100,6 +109,8 @@
             <strong>25%</strong>
             <span>faster Sniffd AI search</span>
           </div>
+          <div><strong>16-bit</strong><span>custom FPGA processor</span></div>
+          <div><strong>CRC-16</strong><span>validated serial protocol</span></div>
         </div>
       </div>
 
@@ -136,6 +147,7 @@
             <span>FIRMWARE</span>
             <span>ROBOTICS</span>
             <span>SOFTWARE</span>
+            <span>FPGA</span>
           </div>
 
           <div class="player-meta">
@@ -155,7 +167,7 @@
       <div>
         <span>STM32</span><b>◆</b><span>EMBEDDED C</span><b>◆</b><span>CAN</span><b>◆</b>
         <span>ROS2</span><b>◆</b><span>PYTHON</span><b>◆</b><span>LINUX</span><b>◆</b>
-        <span>KICAD</span><b>◆</b><span>OSCILLOSCOPE DEBUGGING</span><b>◆</b>
+        <span>FPGA</span><b>◆</b><span>SYSTEMVERILOG</span><b>◆</b><span>OSCILLOSCOPE DEBUGGING</span><b>◆</b>
         <span>STM32</span><b>◆</b><span>EMBEDDED C</span><b>◆</b><span>CAN</span><b>◆</b>
         <span>ROS2</span><b>◆</b><span>PYTHON</span><b>◆</b><span>LINUX</span><b>◆</b>
       </div>
@@ -282,6 +294,23 @@
             <button class="inspect-button" type="button">INSPECT MISSION</button>
           </div>
         </article>
+
+        <article class="mission-card legendary" data-category="digital firmware" data-project="nexa" tabindex="0">
+          <div class="rarity-label">LEGENDARY MISSION</div>
+          <div class="mission-visual fpga-visual"><div class="waveform"><span></span><span></span><span></span><span></span><span></span></div><div class="robot-chip">16-BIT</div></div>
+          <div class="mission-content"><p class="mission-number">MISSION 07</p><h3>NEXA FPGA Computer</h3>
+            <p>Custom 16-bit processor with an original ISA, ALU, register file, and control unit.</p>
+            <div class="tag-row"><span>SYSTEMVERILOG</span><span>FPGA</span><span>GTKWAVE</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button></div>
+        </article>
+        <article class="mission-card epic" data-category="firmware" data-project="glitch" tabindex="0">
+          <div class="rarity-label">EPIC MISSION</div>
+          <div class="mission-visual goblin-visual"><div class="goblin-terminal"><span class="terminal-title">SERUM // LINK</span><b>STM32</b><i>CRC OK</i><i>ACK 07</i><i>UART RX</i></div><div class="goblin-badge">GG</div><div class="goblin-bolt"></div></div>
+          <div class="mission-content"><p class="mission-number">MISSION 08</p><h3>Glitch Goblin</h3>
+            <p>Interrupt-driven UART and a custom framed protocol for repeatable hardware validation.</p>
+            <div class="tag-row"><span>STM32</span><span>UART</span><span>CRC-16</span><span>ESP32</span></div>
+            <button class="inspect-button" type="button">INSPECT MISSION</button></div>
+        </article>
       </div>
     </section>
 
@@ -354,87 +383,27 @@
 
       <div class="quest-map">
         <div class="quest-path" aria-hidden="true"></div>
-
-        <article class="quest-entry active-quest">
-          <div class="quest-node"><span>01</span></div>
-          <div class="quest-card">
-            <div class="quest-top">
-              <span class="quest-status">ACTIVE QUEST</span>
-              <span>JAN 2026 — PRESENT</span>
-            </div>
-            <h3>AI Security Research Engineer</h3>
-            <p>Real-time Embedded Software Group · University of Waterloo</p>
-            <ul>
-              <li>Developing a Tor-enabled cybersecurity data crawler and semantic filtering pipeline.</li>
-              <li>Building runtime monitoring, JSONL processing, and AI-oriented research tooling.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="quest-entry active-quest">
-          <div class="quest-node"><span>02</span></div>
-          <div class="quest-card">
-            <div class="quest-top">
-              <span class="quest-status">ACTIVE QUEST</span>
-              <span>MAY 2025 — PRESENT</span>
-            </div>
-            <h3>Embedded Systems Developer</h3>
-            <p>Electrium Mobility Design Team</p>
-            <ul>
-              <li>Developing firmware for a dual-STM32 vehicle architecture using CAN communication.</li>
-              <li>Integrating sensing, power distribution, shutdown controls, LEDs, and buzzer feedback.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="quest-entry completed-quest">
-          <div class="quest-node"><span>03</span></div>
-          <div class="quest-card">
-            <div class="quest-top">
-              <span class="quest-status">QUEST COMPLETE</span>
-              <span>SEP 2025 — DEC 2025</span>
-            </div>
-            <h3>Robotics Research Assistant</h3>
-            <p>Real-time Embedded Software Group · University of Waterloo</p>
-            <ul>
-              <li>Created a ROS-based distributed control architecture on Raspberry Pi 5 and Ubuntu.</li>
-              <li>Implemented STM32 motor, PWM, encoder, and feedback-control firmware.</li>
-            </ul>
-          </div>
-        </article>
-
-
-        <article class="quest-entry completed-quest">
-          <div class="quest-node"><span>04</span></div>
-          <div class="quest-card">
-            <div class="quest-top">
-              <span class="quest-status">QUEST COMPLETE</span>
-              <span>MAY 2025 — AUG 2025</span>
-            </div>
-            <h3>Software Testing Developer (Co-op)</h3>
-            <p>ACESOFT Technologies</p>
-            <ul>
-              <li>Performed manual system testing, designed and executed test cases, and worked with QA engineers to reduce critical defects before release.</li>
-              <li>Contributed to front-end development using JavaScript and React, improving usability and reducing load times by 15%.</li>
-              <li>Tested an AI-powered health-tracking application and proposed feature improvements that supported better prediction accuracy.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="quest-entry education-quest">
-          <div class="quest-node"><span>05</span></div>
-          <div class="quest-card">
-            <div class="quest-top">
-              <span class="quest-status">MAIN CAMPAIGN</span>
-              <span>2024 — 2029</span>
-            </div>
-            <h3>BASc Computer Engineering</h3>
-            <p>University of Waterloo · Presidential Scholarship of Distinction</p>
-            <ul>
-              <li>Coursework includes embedded microprocessors, digital systems, electronic circuits, algorithms, signals, and concurrency.</li>
-            </ul>
-          </div>
-        </article>
+        <article class="quest-entry active-quest palitronica-quest"><div class="quest-node"><span>01</span></div><div class="quest-card">
+          <div class="quest-hover-visual" aria-hidden="true"><div class="scope-grid"></div><div class="scope-wave"></div><div class="board-chip">STM32</div><div class="pulse-dot p1"></div><div class="pulse-dot p2"></div><div class="visual-caption">TRIGGER BOARD // SIGNAL LOCK</div></div>
+          <div class="live-ribbon">LIVE</div><div class="quest-top"><span class="quest-status">ACTIVE QUEST</span><span>SEP 2026 — PRESENT</span></div>
+          <div class="quest-title-row"><div><h3>Embedded Firmware Developer (Co-op)</h3><p>Palitronica Inc. · Waterloo, ON</p></div><div class="quest-xp"><b>LVL 26</b><span>FIRMWARE</span></div></div>
+          <div class="quest-tech"><span>STM32</span><span>C/C++</span><span>CAN / ARINC 429</span><span>CMAKE</span><span>DOCKER</span><span>PYTHON CLI</span><span>SIL / HIL</span></div>
+          <ul><li>Architecting a protocol-agnostic STM32 firmware framework for PowerFuzzer trigger hardware, translating common fuzzing and control commands into CAN, ARINC 429, UART, and additional embedded interfaces.</li><li>Developing reusable protocol adapters and board interfaces that separate shared triggering, timing, and control logic from transport-specific behavior.</li><li>Building a portable CMake, Docker, and Python CLI workflow for reproducible x86_64 Linux build, flash, monitor, test, and board-configuration flows.</li><li>Implementing firmware bring-up, SIL/HIL validation, and root-cause debugging using OpenOCD, ST-Link/SWD, serial monitoring, and laboratory instrumentation.</li></ul>
+          <div class="quest-progress"><span>QUEST PROGRESS</span><div><i style="width:82%"></i></div><b>IN PROGRESS</b></div>
+        </div></article>
+        <article class="quest-entry active-quest warg-quest"><div class="quest-node"><span>02</span></div><div class="quest-card">
+          <div class="quest-hover-visual" aria-hidden="true"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="drone-mark"><i></i><i></i><b></b></div><div class="can-link"><span>MCU A</span><em>CAN</em><span>MCU B</span></div><div class="visual-caption">AVIONICS // DUAL MCU LINK</div></div>
+          <div class="live-ribbon">LIVE</div><div class="quest-top"><span class="quest-status">ACTIVE QUEST</span><span>SEP 2026 — PRESENT</span></div>
+          <div class="quest-title-row"><div><h3>Embedded Flight Software Developer</h3><p>Waterloo Aerial Robotics Group · Waterloo, ON</p></div><div class="quest-xp"><b>LVL 26</b><span>AVIONICS</span></div></div>
+          <div class="quest-tech"><span>STM32L431KCU6</span><span>DRONECAN / UAVCAN v0</span><span>CAN</span><span>HAL</span><span>GPIO / TIMERS</span></div>
+          <ul><li>Implementing embedded C firmware for the PineCAN Single Servo Driver Rev 2 target on an STM32L431KCU6.</li><li>Integrating application logic with WARG’s lightweight DroneCAN (UAVCAN v0) stack for CAN-based UAV peripherals.</li><li>Developing and validating servo-control, CAN message-handling, HAL drivers, GPIO, timers, and hardware interfaces for reliable actuator control.</li><li>Contributing to WARG’s embedded flight-software stack through firmware bring-up, driver integration, hardware validation, debugging, and Git-based code review.</li></ul>
+          <div class="quest-progress"><span>QUEST PROGRESS</span><div><i style="width:76%"></i></div><b>IN PROGRESS</b></div>
+        </div></article>
+        <article class="quest-entry completed-quest"><div class="quest-node"><span>03</span></div><div class="quest-card"><div class="quest-top"><span class="quest-status">QUEST COMPLETE</span><span>SEP 2025 — DEC 2025</span></div><h3>Robotics Research Assistant</h3><p>Real-time Embedded Software Group · University of Waterloo</p><ul><li>Integrated STM32F401 firmware with a Raspberry Pi robotic platform for PWM actuation and quadrature encoder feedback.</li><li>Debugged timing, waveforms, communication, and servo feedback using lab instruments.</li></ul></div></article>
+        <article class="quest-entry completed-quest"><div class="quest-node"><span>04</span></div><div class="quest-card"><div class="quest-top"><span class="quest-status">QUEST COMPLETE</span><span>MAY 2025 — AUG 2025</span></div><h3>Software & Systems Developer (Co-op)</h3><p>Acesoft Inc. · London, ON</p><ul><li>Built Python test utilities to automate functional validation and reproduce faults.</li><li>Tested integrated systems, API communication, data flow, and error conditions to isolate failures.</li></ul></div></article>
+        
+        
+        <article class="quest-entry education-quest"><div class="quest-node"><span>05</span></div><div class="quest-card"><div class="quest-top"><span class="quest-status">MAIN CAMPAIGN</span><span>SEP 2024 — JUN 2029</span></div><h3>BASc Computer Engineering</h3><p>University of Waterloo · Presidential Scholarship of Distinction</p><ul><li>Coursework: digital and electronic circuits, embedded microprocessors, signals, digital computers, concurrency, and algorithms.</li></ul></div></article>
       </div>
     </section>
 
@@ -444,8 +413,7 @@
           <p class="eyebrow">NEW SQUAD REQUEST</p>
           <h2>LET’S BUILD SOMETHING THAT HAS TO WORK.</h2>
           <p>
-            I am seeking Fall 2026 co-op opportunities in firmware, embedded systems,
-            robotics, electronics, and software engineering.
+            I am seeking Summer 2027 opportunities in firmware, embedded systems, robotics, electronics, and software engineering.
           </p>
 
           <div class="contact-links">
@@ -478,7 +446,7 @@
             <div><strong>YOUR TEAM</strong><span>OPEN SLOT</span></div>
           </div>
           <a class="game-button primary full-button" href="mailto:v5vijay@uwaterloo.ca?subject=Engineering%20Opportunity">INVITE TO INTERVIEW</a>
-          <a class="game-button secondary full-button" href="Varun_Vijay_Engineering_Portfolio.pdf" download>DOWNLOAD PORTFOLIO PDF</a>
+          <a class="game-button secondary full-button" href="Varun_Vijay_Resume.pdf" download>DOWNLOAD RESUME</a>
         </div>
       </div>
     </section>
